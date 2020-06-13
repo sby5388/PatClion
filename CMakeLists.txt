@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.16)
+project(Pat C)
+set(CMAKE_CXX_FLAGS “${CMAKE_CXX_FLAGS} -Wall -fexec-charset=UTF8”)
+
+SET(SETS_12 false)
+SET(SETS_12_1 false)
+SEt(sets15 true)
+
+set(CMAKE_C_STANDARD 99)
+if (SETS_12)
+    include(sets12/CMakeLists.txt)
+endif ()
+if (SETS_12_1)
+    include(sets12_1/CMakeLists.txt)
+endif ()
+if (sets15)
+    include(sets15/CMakeLists.txt)
+endif ()
