@@ -1,3 +1,7 @@
 .idea
 cmake-build-debug
-.iml
+*.iml
+*.exe
+*.o
+*.a
+

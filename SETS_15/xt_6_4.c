@@ -22,8 +22,8 @@
  *  4 NA 1 2 5 3
  *
  */
-#include "stdlib.h"
-#include "stdio.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 #define ERROR -1
 typedef int ElementType;
@@ -36,6 +36,8 @@ struct LNode {
 };
 
 List Read();
+
+List Read2();
 
 ElementType FindKth(List L, int K);
 
@@ -59,18 +61,19 @@ int main() {
 }
 
 List Read() {
+    if (0) {
+        return Read2();
+    }
     //下标从1开始
-    List L;
+    List L = NULL;
     List tail;
-    int N;
-    List pNode;
+    int N = -1;
     scanf("%d", &N);
     while (N != -1) {
-        pNode = (List) malloc(sizeof(struct LNode));
+        List pNode = (List) malloc(sizeof(struct LNode));
         pNode->Next = NULL;
-        pNode->Data = 20;
-        printf("input = %d\n", N);
-        if (tail == NULL) {
+        pNode->Data = N;
+        if (L == NULL) {
             L = pNode;
             tail = pNode;
         } else {
@@ -78,24 +81,61 @@ List Read() {
             tail = tail->Next;
         }
         scanf("%d", &N);
-
     }
     return L;
 }
 
+
+List Read2() {
+    List L;
+    List pTail;
+    int N = -1;
+    while ((scanf("%d", &N) == 1) && N != -1) {
+        List pNode = (List) malloc(sizeof(struct LNode));
+        pNode->Next = NULL;
+        pNode->Data = N;
+        if (L == NULL) {
+            L = pNode;
+            pTail = L;
+        } else {
+            pTail->Next = pNode;
+            pTail = pTail->Next;
+        }
+    }
+    return L;
+}
+
+ElementType FindKth2(List L, int K) {
+    int p = 1;
+    while (p != K && L != NULL) {
+        L = L->Next;
+        p++;
+    }
+    if (L == NULL) {
+        return ERROR;
+    }
+    return L->Data;
+
+}
+
+/**
+ * 根据位置找值，而不是根据值找位置
+ * @param L
+ * @param K K是下标
+ * @return  值
+ */
 ElementType FindKth(List L, int K) {
-    if (!L) {
+    if (L == NULL) {
         return ERROR;
     }
     List p = L;
     int i = 1;
     while (p) {
-        if (p->Data == K) {
-            return i;
+        if (K == i) {
+            return p->Data;
         }
         i++;
         p = p->Next;
     }
     return ERROR;
-
 }
