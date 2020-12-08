@@ -2,7 +2,7 @@
 set(CMAKE_C_STANDARD 99)
 #设置当前的路径
 set(MY_PATH ${CMAKE_CURRENT_LIST_DIR})
-if (false)
+if (true)
     add_executable(xt1_8.c xt1_8.c)
     add_executable(xt1_9.c xt1_9.c)
     add_executable(xt2_4.c xt2_4.c)
@@ -21,3 +21,8 @@ add_executable(xt3_3.c xt3_3.c)
 add_executable(xt3_5.c xt3_5.c)
 
 add_executable(xt2_3.c xt2_3.c)
+
+add_executable(xt1_9_copy xt1_9_copy.c)
+
+add_executable(xt_3_12 xt_3_12.c)
+add_executable(xt_3_13 xt_3_13.c)

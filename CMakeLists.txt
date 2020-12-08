@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.14.2)
-project(Pat C)
+project(PatClion C)
 set(CMAKE_CXX_FLAGS “${CMAKE_CXX_FLAGS} -Wall -fexec-charset=UTF8”)
 
 SET(SETS_12 false)
 SET(SETS_12_1 false)
 SET(SETS_15 true)
 SET(DATA_STRUCTURE_BOOK false)
-SET(SETS_434 false)
+SET(SETS_434 true)
 
 
 set(CMAKE_C_STANDARD 99)
@@ -25,3 +25,5 @@ endif ()
 if (SETS_434)
     add_subdirectory(sets_434)
 endif ()
+
+add_subdirectory(temp)

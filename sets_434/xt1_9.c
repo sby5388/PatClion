@@ -133,11 +133,9 @@ void PrintList(List L) {
 //插入：从大到小
 bool Insert(List L, ElementType X) {
     if (L == NULL) {
-//        printf("qqq\n");
         return false;
     }
     if (L->Last >= (MAXSIZE - 1)) {
-//        printf("qqq2\n");
         return false;
     }
     Position last = L->Last;

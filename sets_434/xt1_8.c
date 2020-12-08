@@ -53,15 +53,9 @@ Position BinarySearch(List L, ElementType X);
 
 int main() {
     List L;
-//    List L1;
     ElementType X;
     Position P;
     L = ReadInput();
-//    L1 = L;
-//    for (int i = 1; i <= L->Last; ++i) {
-//        printf("%d : %d\n", i, L1->Data[i]);
-//
-//    }
 
     scanf("%d", &X);
     P = BinarySearch(L, X);
@@ -126,13 +120,6 @@ Position BinarySearch(List L, ElementType X) {
     if (L == NULL) {
         return NotFound;
     }
-//    if (L->Data[0] == X) {
-//        return 1;
-//    }
-    //printf("last = %d\n", last);
-//    if (L->Data[last - 1] == X) {
-//        return last;
-//    }
 
     Position right = L->Last;
     Position left = 1;
