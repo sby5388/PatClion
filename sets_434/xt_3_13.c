@@ -145,8 +145,9 @@ Operation getOp() {
 
 
 bool Push(ElementType X, Deque D) {
-    if (D->Rear - D->Front == D->MaxSize){
+    if (D->Rear - D->Front == D->MaxSize || D->Rear == D->Front) {
         return false;
     }
+
 
 }

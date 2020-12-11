@@ -1,0 +1,15 @@
+#浙大版《C语言程序设计实验与习题指导（第3版）》题目集
+#https://pintia.cn/problem-sets/13/problems/type/6
+add_executable(sy_8_1_1.c sy_8_1_1.c)
+add_executable(sy_8_1_3.c sy_8_1_3.c)
+add_executable(sy_10_4 sy_10_4.c)
+add_executable(sy_11_2_1.c sy_11_2_1.c)
+add_executable(sy_11_2_2.c sy_11_2_2.c)
+add_executable(sy_11_2_3.c sy_11_2_3.c)
+add_executable(sy_11_2_4.c sy_11_2_4.c)
+add_executable(sy_11_2_5.c sy_11_2_5.c)
+add_executable(sy_11_2_6.c sy_11_2_6.c)
+add_executable(sy_11_2_7.c sy_11_2_7.c)
+add_executable(sy_11_2_8.c sy_11_2_8.c)
+add_executable(sy_11_2_9.c sy_11_2_9.c)
+add_executable(sy_11_1_8.c sy_11_1_8.c)

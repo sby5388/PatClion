@@ -26,4 +26,10 @@ if (SETS_434)
     add_subdirectory(sets_434)
 endif ()
 
+add_subdirectory(sets13)
+add_subdirectory(sets14)
+add_subdirectory(sets17)
+
+add_subdirectory(other)
+
 add_subdirectory(temp)
