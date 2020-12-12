@@ -2,6 +2,10 @@
 #https://pintia.cn/problem-sets/13/problems/type/6
 add_executable(sy_8_1_1.c sy_8_1_1.c)
 add_executable(sy_8_1_3.c sy_8_1_3.c)
+add_executable(sy_8_1_4.c sy_8_1_4.c)
+add_executable(sy_8_1_5.c sy_8_1_5.c)
+add_executable(sy_8_1_6.c sy_8_1_6.c)
+add_executable(sy_8_1_7.c sy_8_1_7.c)
 add_executable(sy_10_4 sy_10_4.c)
 add_executable(sy_11_2_1.c sy_11_2_1.c)
 add_executable(sy_11_2_2.c sy_11_2_2.c)

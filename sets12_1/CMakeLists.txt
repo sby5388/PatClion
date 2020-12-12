@@ -128,3 +128,5 @@ endif ()
 
 add_executable(5_7_xt 5_7_xt.c)
 add_executable(9_5_xt 9_5_xt.c)
+add_executable(9_5_xt_new 9_5_xt_new.c)
+add_executable(9_4.c 9_4.c)

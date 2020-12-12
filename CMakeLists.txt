@@ -3,7 +3,7 @@ project(PatClion C)
 set(CMAKE_CXX_FLAGS “${CMAKE_CXX_FLAGS} -Wall -fexec-charset=UTF8”)
 
 SET(SETS_12 false)
-SET(SETS_12_1 false)
+SET(SETS_12_1 true)
 SET(SETS_15 true)
 SET(DATA_STRUCTURE_BOOK false)
 SET(SETS_434 true)
