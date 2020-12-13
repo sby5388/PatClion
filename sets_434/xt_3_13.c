@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define ERROR
+#define ERROR -1
 typedef int ElementType;
 typedef int Position;
 typedef struct QNode *PtrToQNode;
@@ -31,6 +31,7 @@ typedef enum {
     eject,
     end
 } Operation;
+
 typedef enum {
     false, true
 } bool;
@@ -69,7 +70,7 @@ bool Inject(ElementType X, Deque D);
  */
 ElementType Eject(Deque D);
 
-Operation getOP();
+Operation getOp();
 
 void PrintDeque(Deque D);
 
@@ -82,7 +83,7 @@ int main() {
     scanf("%d", &N);
     D = CreateDeque(N);
     while (!done) {
-        switch (getOP()) {
+        switch (getOp()) {
             case push:
                 scanf("%d", &X);
                 if (Push(X, D) == false) {
@@ -90,14 +91,31 @@ int main() {
                 }
                 break;
             case pop:
-
+                X = Pop(D);
+                if (X == ERROR) {
+                    printf("Deque is Empty!\n");
+                } else {
+                    printf("%d is out\n", X);
+                }
 
                 break;
             case inject:
+                scanf("%d", &X);
+                if (!Inject(X, D)) {
+                    printf("Deque is Full!\n");
+                }
                 break;
             case eject:
+                X = Eject(D);
+                if (X == ERROR) {
+                    printf("Deque is Empty!\n");
+                } else {
+                    printf("%d is out\n", X);
+                }
                 break;
             case end:
+                PrintDeque(D);
+                done = 1;
                 break;
         }
     }
@@ -143,11 +161,83 @@ Operation getOp() {
     return end;
 }
 
+void PrintDeque(Deque D) {
+    printf("Inside Deque:");
+    ElementType X = Pop(D);
+    while (X != ERROR) {
+        printf("%d ", X);
+        X = Pop(D);
+    }
+}
 
+
+//满了，返回false
+//插入到头部，不是尾部
 bool Push(ElementType X, Deque D) {
-    if (D->Rear - D->Front == D->MaxSize || D->Rear == D->Front) {
+    //TODO P85 判断满了的条件
+    if ((D->Rear + 1) % D->MaxSize == D->Front) {
         return false;
     }
+    //可能存在空的情况
+    if (D->Front == D->Rear) {
+        D->Front = (D->Front - 1) % D->MaxSize;
+        D->Rear = D->Front;
+        D->Data[D->Front] = X;
 
-
+    } else {
+        D->Front = (D->Front - 1) % D->MaxSize;
+        D->Data[D->Front] = X;
+    }
+    return true;
 }
+
+//DeleteD
+ElementType Pop(Deque D) {
+    if (D->Front == D->Rear) {
+        return ERROR;
+    }
+    D->Front = (D->Front + 1) % D->MaxSize;
+    ElementType X = D->Data[D->Front];
+    return X;
+}
+
+/**
+ * 将元素插入到双端队列D的尾部（其实就是正常的Push操作）
+ * @param X
+ * @param D
+ * @return
+ */
+//AddD
+bool Inject(ElementType X, Deque D) {
+    //TODO P85 判断满了的条件
+    if ((D->Rear + 1) % D->MaxSize == D->Front) {
+        return false;
+    }
+    if (0 && D->Front == D->Rear) {
+        D->Rear = (D->Rear + 1) % D->MaxSize;
+//        D->Front = D->Rear;
+        D->Data[D->Rear] = X;
+    } else {
+        D->Rear = (D->Rear + 1) % D->MaxSize;
+        D->Data[D->Rear] = X;
+    }
+
+    return true;
+}
+
+/**
+ * 删除双端队列D的尾部元素，并返回
+ * @param D
+ * @return
+ */
+ElementType Eject(Deque D) {
+    if (D->Front == D->Rear) {
+        return ERROR;
+    }
+    ElementType X = D->Data[D->Rear];
+    D->Rear = (D->Rear - 1) % D->MaxSize;
+    return X;
+}
+
+//fixme 20201213 这道题经过 push 3 之后，调用End,打印的确实空的
+//todo
