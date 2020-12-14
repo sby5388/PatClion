@@ -127,6 +127,25 @@ void PostorderTraversal(BinTree BT) {
 
 
 }
+//对BinTree的引用
+typedef struct Node *Item;
+
+struct Node {
+    Item Next;
+    BinTree Data;
+};
+
+//队列
+typedef struct QNode *Queue;
+struct QNode {
+    Item Front;
+    Item Rear;
+};
+
+Queue CreateQueue();
+
+Queue AddQ(Item item);
+
 
 /**
  * 层次遍历
@@ -136,8 +155,22 @@ void LevelorderTraversal(BinTree BT) {
     if (BT == NULL) {
         return;
     }
+    BinTree bt = BT;
 
-    BinTree pNode = BT;
-    printf("%c ", BT->Data);
 
+    Queue Q = CreateQueue();
+
+
+    while (bt) {
+
+    }
+
+
+}
+
+Queue CreateQueue() {
+    Queue Q = (Queue) malloc(sizeof(struct QNode));
+    Q->Front = NULL;
+    Q->Rear = NULL;
+    return Q;
 }

@@ -73,10 +73,63 @@ int main() {
         BST = Insert(BST, X);
     }
 
+    printf("Preorder:");
+    PreorderTraversal(BST);
+    printf("\n");
+
+    MinP = FindMin(BST);
+    MaxP = FindMax(BST);
+
+
+    scanf("%d", &N);
+
+    for (i = 0; i < N; ++i) {
+        scanf("%d", &X);
+        Tmp = Find(BST, X);
+        if (Tmp == NULL) {
+            printf("%d is not found\n", X);
+        } else {
+            printf("%d is found\n", Tmp->Data);
+            if (Tmp == MinP) {
+                printf("%d is the smallest key\n", Tmp->Data);
+            }
+            if (Tmp == MaxP) {
+                printf("%d is the largest key\n", Tmp->Data);
+            }
+        }
+    }
+
+    scanf("%d", &N);
+    for (i = 0; i < N; ++i) {
+        scanf("%d", &X);
+        BST = Delete(BST, X);
+    }
+
+    printf("Inorder:");
+    InorderTraversal(BST);
+    printf("\n");
 
     return 0;
 }
 
+
+void PreorderTraversal(BinTree BT) {
+    if (BT) {
+        printf("%d ", BT->Data);
+        PreorderTraversal(BT->Left);
+        PreorderTraversal(BT->Right);
+    }
+}
+
+void InorderTraversal(BinTree BT) {
+    if (BT) {
+        InorderTraversal(BT->Left);
+        printf("%d ", BT->Data);
+        InorderTraversal(BT->Right);
+    }
+}
+
+/* 你的代码将被嵌在这里 */
 
 BinTree Insert(BinTree BST, ElementType X) {
     BinTree binTree = (BinTree) malloc(sizeof(struct TNode));
@@ -84,7 +137,26 @@ BinTree Insert(BinTree BST, ElementType X) {
     binTree->Left = NULL;
     binTree->Data = X;
     if (BST) {
-
+        BinTree B = BST;
+        while (B) {
+            if (X > B->Data) {
+                if (B->Right) {
+                    B = B->Right;
+                } else {
+                    B->Right = binTree;
+                    break;
+                }
+            } else if (X < B->Data) {
+                if (B->Left) {
+                    B = B->Left;
+                } else {
+                    B->Left = binTree;
+                }
+            } else {
+                //理论上这种事不允许存在二叉树里面的
+                break;
+            }
+        }
 
     } else {
         BST = binTree;
@@ -95,15 +167,14 @@ BinTree Insert(BinTree BST, ElementType X) {
 }
 
 //todo 删除之后，树的形状要发生改变
+//fixme 我还不会
 BinTree Delete(BinTree BST, ElementType X) {
     BinTree pNode = BST;
 //    if (!pNode) {
 //        printf("Not Found\n");
 //
-//    }
-    while (pNode) {
-
-    }
+    //删除之后，并不会
+    return BST;
 
 }
 
@@ -118,10 +189,10 @@ BinTree Find(BinTree BST, ElementType X) {
         return pNode;
     }
     if (X > pNode->Data) {
-        return Find(BST->Right, X);
+        return Find(pNode->Right, X);
     }
     if (X < pNode->Data) {
-        return Find(BST->Left, X);
+        return Find(pNode->Left, X);
     }
     return NULL;
 }
@@ -145,3 +216,4 @@ BinTree FindMax(BinTree BST) {
     return pNode;
 
 }
+
