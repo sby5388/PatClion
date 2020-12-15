@@ -177,7 +177,7 @@ bool IsEmpty(Deque D);
 
 bool IsFull(Deque D);
 
-bool PushBack(ElementType, Deque D);
+bool PushBack(ElementType X, Deque D);
 
 ElementType PopBack(Deque D);
 
@@ -187,20 +187,6 @@ bool Push(ElementType X, Deque D) {
     if (IsFull(D)) {
         return false;
     }
-    //可能存在空的情况
-//    if (IsEmpty(D)){
-//
-//    }
-
-//    if (D->Front == D->Rear) {
-//        D->Front = (D->Front - 1) % D->MaxSize;
-//        D->Rear = D->Front;
-//        D->Data[D->Front] = X;
-//
-//    } else {
-//        D->Front = (D->Front - 1) % D->MaxSize;
-//        D->Data[D->Front] = X;
-//    }
     D->Front = (D->Front - 1) % D->MaxSize;
     D->Data[D->Front] = X;
     return true;
@@ -211,8 +197,8 @@ ElementType Pop(Deque D) {
     if (IsEmpty(D)) {
         return ERROR;
     }
-    ElementType X = D->Data[D->Front];
     D->Front = (D->Front + 1) % D->MaxSize;
+    ElementType X = D->Data[D->Front];
     return X;
 }
 
@@ -224,13 +210,7 @@ ElementType Pop(Deque D) {
  */
 //AddD
 bool Inject(ElementType X, Deque D) {
-    //TODO P85 判断满了的条件
-    if (IsFull(D)) {
-        return false;
-    }
-    D->Data[D->Rear] = X;
-    D->Rear = (D->Rear + 1) % D->MaxSize;
-    return true;
+    return PushBack(X, D);
 }
 
 /**
@@ -239,12 +219,7 @@ bool Inject(ElementType X, Deque D) {
  * @return
  */
 ElementType Eject(Deque D) {
-    if (IsEmpty(D)) {
-        return ERROR;
-    }
-    D->Rear = (D->Rear - 1) % D->MaxSize;
-    ElementType X = D->Data[D->Rear];
-    return X;
+    return PopBack(D);
 }
 
 //fixme 20201213 这道题经过 push 3 之后，调用End,打印的确实空的
@@ -257,4 +232,28 @@ bool IsEmpty(Deque D) {
 bool IsFull(Deque D) {
     //TODO P85 判断满了的条件
     return (D->Rear + 1) % D->MaxSize == D->Front;
+}
+
+/*
+ * 将元素插入到双端队列D的尾部
+ */
+bool PushBack(ElementType X, Deque D) {
+    //TODO P85 判断满了的条件
+    if (IsFull(D)) {
+        return false;
+    }
+    D->Rear = (D->Rear + 1) % D->MaxSize;
+    D->Data[D->Rear] = X;
+    return true;
+
+}
+
+ElementType PopBack(Deque D) {
+    if (IsEmpty(D)) {
+        return ERROR;
+    }
+    D->Rear = (D->Rear - 1) % D->MaxSize;
+    ElementType X = D->Data[D->Rear];
+    return X;
+
 }
