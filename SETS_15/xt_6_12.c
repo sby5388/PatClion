@@ -179,7 +179,6 @@ BinTree Delete(BinTree BST, ElementType X) {
 }
 
 BinTree Find(BinTree BST, ElementType X) {
-
     BinTree pNode = BST;
     if (!pNode) {
         return NULL;
@@ -204,7 +203,6 @@ BinTree FindMin(BinTree BST) {
         pNode = pNode->Left;
     }
     return pNode;
-
 }
 
 BinTree FindMax(BinTree BST) {
@@ -214,6 +212,5 @@ BinTree FindMax(BinTree BST) {
         pNode = pNode->Right;
     }
     return pNode;
-
 }
 

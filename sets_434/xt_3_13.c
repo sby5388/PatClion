@@ -86,7 +86,7 @@ int main() {
         switch (getOp()) {
             case push:
                 scanf("%d", &X);
-                if (Push(X, D) == false) {
+                if (!Push(X, D)) {
                     printf("Deque is Full!\n");
                 }
                 break;
@@ -125,6 +125,7 @@ int main() {
 
 
 /* 注意：为区分空队列和满队列，需要多开辟一个空间 */
+//TODO 这里是题目给定的，不能修改
 Deque CreateDeque(int MaxSize) {
     Deque D = (Deque) malloc(sizeof(struct QNode));
     MaxSize++;
@@ -170,34 +171,48 @@ void PrintDeque(Deque D) {
     }
 }
 
+/* 你的代码将被嵌在这里 */
+
+bool IsEmpty(Deque D);
+
+bool IsFull(Deque D);
+
+bool PushBack(ElementType, Deque D);
+
+ElementType PopBack(Deque D);
 
 //满了，返回false
 //插入到头部，不是尾部
 bool Push(ElementType X, Deque D) {
-    //TODO P85 判断满了的条件
-    if ((D->Rear + 1) % D->MaxSize == D->Front) {
+    if (IsFull(D)) {
         return false;
     }
     //可能存在空的情况
-    if (D->Front == D->Rear) {
-        D->Front = (D->Front - 1) % D->MaxSize;
-        D->Rear = D->Front;
-        D->Data[D->Front] = X;
+//    if (IsEmpty(D)){
+//
+//    }
 
-    } else {
-        D->Front = (D->Front - 1) % D->MaxSize;
-        D->Data[D->Front] = X;
-    }
+//    if (D->Front == D->Rear) {
+//        D->Front = (D->Front - 1) % D->MaxSize;
+//        D->Rear = D->Front;
+//        D->Data[D->Front] = X;
+//
+//    } else {
+//        D->Front = (D->Front - 1) % D->MaxSize;
+//        D->Data[D->Front] = X;
+//    }
+    D->Front = (D->Front - 1) % D->MaxSize;
+    D->Data[D->Front] = X;
     return true;
 }
 
 //DeleteD
 ElementType Pop(Deque D) {
-    if (D->Front == D->Rear) {
+    if (IsEmpty(D)) {
         return ERROR;
     }
-    D->Front = (D->Front + 1) % D->MaxSize;
     ElementType X = D->Data[D->Front];
+    D->Front = (D->Front + 1) % D->MaxSize;
     return X;
 }
 
@@ -210,18 +225,11 @@ ElementType Pop(Deque D) {
 //AddD
 bool Inject(ElementType X, Deque D) {
     //TODO P85 判断满了的条件
-    if ((D->Rear + 1) % D->MaxSize == D->Front) {
+    if (IsFull(D)) {
         return false;
     }
-    if (0 && D->Front == D->Rear) {
-        D->Rear = (D->Rear + 1) % D->MaxSize;
-//        D->Front = D->Rear;
-        D->Data[D->Rear] = X;
-    } else {
-        D->Rear = (D->Rear + 1) % D->MaxSize;
-        D->Data[D->Rear] = X;
-    }
-
+    D->Data[D->Rear] = X;
+    D->Rear = (D->Rear + 1) % D->MaxSize;
     return true;
 }
 
@@ -231,13 +239,22 @@ bool Inject(ElementType X, Deque D) {
  * @return
  */
 ElementType Eject(Deque D) {
-    if (D->Front == D->Rear) {
+    if (IsEmpty(D)) {
         return ERROR;
     }
-    ElementType X = D->Data[D->Rear];
     D->Rear = (D->Rear - 1) % D->MaxSize;
+    ElementType X = D->Data[D->Rear];
     return X;
 }
 
 //fixme 20201213 这道题经过 push 3 之后，调用End,打印的确实空的
 //todo
+
+bool IsEmpty(Deque D) {
+    return D->Front == D->Rear;
+}
+
+bool IsFull(Deque D) {
+    //TODO P85 判断满了的条件
+    return (D->Rear + 1) % D->MaxSize == D->Front;
+}
