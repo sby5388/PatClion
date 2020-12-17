@@ -62,11 +62,11 @@ int main() {
 }
 
 List Read() {
-    int N;
-    List L;
-    L = (List) malloc(sizeof(struct Node));
+    List L = (List) malloc(sizeof(struct Node));
     L->Next = NULL;
     List tail = L;
+
+    int N;
     scanf("%d", &N);
     while (N) {
         List node = (List) malloc(sizeof(struct Node));
@@ -80,81 +80,38 @@ List Read() {
 }
 
 void Print(List L) {
-    List next;
     if (L == NULL) {
         return;
     }
-    next = L->Next;
+    List next = L->Next;
     while (next) {
         printf("%d ", next->Data);
         next = next->Next;
     }
 }
 
+/* 你的代码将被嵌在这里 */
+
 List Insert(List L, ElementType X) {
-    List next;
-    List insert;
-    if (L == NULL) {
+    List pNode = (List) malloc(sizeof(struct Node));
+    pNode->Next = NULL;
+    pNode->Data = X;
+    //插在头部
+    if (L->Next == NULL || L->Next->Data > X) {
+        pNode->Next = L->Next;
+        L->Next = pNode;
         return L;
     }
-    next = L->Next;
-    insert = (List) malloc(sizeof(struct Node));
-    insert->Next = NULL;
-    insert->Data = X;
-    if (next == NULL) {
-        //既有队列为空
-        L->Next = insert;
-    } else {
-        if (X <= next->Data) {
-            //插在头部
-            insert->Next = next;
-            L->Next = insert;
+    List pHead = L->Next;
+    //插在中间或者尾部
+    while (pHead) {
+        if (pHead->Data < X && (pHead->Next == NULL || pHead->Next->Data > X)) {
+            pNode->Next = pHead->Next;
+            pHead->Next = pNode;
+            break;
         } else {
-            //插在中间或者尾部
-            List last = next->Next;
-            while (next && X >= next->Data) {
-                if (last == NULL || X <= last->Data) {
-                    insert->Next = last;
-                    next->Next = insert;
-                    break;
-                } else {
-                    next = next->Next;
-                    last = next->Next;
-                }
-            }
+            pHead = pHead->Next;
         }
     }
     return L;
-}
-
-List Insert2(List L, ElementType X) {
-    List temp = (List) malloc(sizeof(struct Node));
-    temp->Data = X;
-    temp->Next = NULL;
-    /* 在头部插入 */
-    if (X > L->Data) {
-        temp->Next = L;
-        return temp;
-    }
-    List origin = L;
-
-
-    /*在中间或者末尾插入*/
-    int insert = 0;
-    while (L->Next) {
-        if (L->Data <= X && X < L->Next->Data) {
-            List pNode = L->Next;
-            L->Next = temp;
-            temp->Next = pNode;
-            insert = 1;
-            break;
-        }
-        L = L->Next;
-    }
-    /*末尾插入*/
-    if (!insert) {
-        L->Next = temp;
-    }
-
-    return origin;
 }
