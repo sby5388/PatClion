@@ -26,3 +26,5 @@ add_executable(xt1_9_copy xt1_9_copy.c)
 
 add_executable(xt_3_12 xt_3_12.c)
 add_executable(xt_3_13 xt_3_13.c)
+add_executable(xt_3_14 xt_3_14.c)
+add_executable(xt_4_3 xt_4_3.c)

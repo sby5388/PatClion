@@ -39,15 +39,9 @@ int main() {
     //todo 把前面的n个放到前面
     moveArray(array, m, n);
 
-    int first = 1;
-    for (int j = 0; j < m; ++j) {
-        if (first) {
-            printf("%d", array[j]);
-            first = 0;
-        } else {
-            printf(" %d", array[j]);
-        }
-
+    printf("%d", array[0]);
+    for (int j = 1; j < m; ++j) {
+        printf(" %d", array[j]);
     }
 
     return 0;
