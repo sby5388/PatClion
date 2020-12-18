@@ -42,6 +42,8 @@ BinTree BuildTree() {
 }
 
 /* 你的代码将被嵌在这里 */
+//TODO 这里出错了，仅仅判断了根节点与直接左右子树的值的关系，没有判断子孙子树的大小关系
+//fixme
 bool IsBST(BinTree T) {
     if (!T) {
         return true;

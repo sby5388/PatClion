@@ -3,8 +3,8 @@ project(PatClion C)
 set(CMAKE_CXX_FLAGS “${CMAKE_CXX_FLAGS} -Wall -fexec-charset=UTF8”)
 
 SET(SETS_12 false)
-SET(SETS_12_1 true)
-SET(SETS_15 true)
+SET(SETS_12_1 false)
+SET(SETS_15 false)
 SET(DATA_STRUCTURE_BOOK false)
 SET(SETS_434 true)
 
@@ -26,6 +26,8 @@ if (SETS_434)
     add_subdirectory(sets_434)
 endif ()
 
+if(fasle)
+
 add_subdirectory(sets13)
 add_subdirectory(sets14)
 add_subdirectory(sets17)
@@ -33,3 +35,5 @@ add_subdirectory(sets17)
 add_subdirectory(other)
 
 add_subdirectory(temp)
+
+endif()
