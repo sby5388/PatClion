@@ -36,6 +36,7 @@ int main() {
 
 /* 由裁判实现，略去不表 */
 void ReadString(char s[]) {
+
 }
 
 void delchar(char *t, char c) {

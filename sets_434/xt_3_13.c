@@ -186,7 +186,8 @@ bool Push(ElementType X, Deque D) {
     if (IsFull(D)) {
         return false;
     }
-    D->Front = (D->Front - 1) % D->MaxSize;
+    //TODO 要确保下标是非负数
+    D->Front = (D->Front - 1 + D->MaxSize) % D->MaxSize;
     D->Data[D->Front] = X;
     return true;
 }
@@ -196,8 +197,9 @@ ElementType Pop(Deque D) {
     if (IsEmpty(D)) {
         return ERROR;
     }
-    D->Front = (D->Front + 1) % D->MaxSize;
+//    todo
     ElementType X = D->Data[D->Front];
+    D->Front = (D->Front + 1) % D->MaxSize;
     return X;
 }
 
@@ -241,8 +243,9 @@ bool PushBack(ElementType X, Deque D) {
     if (IsFull(D)) {
         return false;
     }
-    D->Rear = (D->Rear + 1) % D->MaxSize;
+    //TODO
     D->Data[D->Rear] = X;
+    D->Rear = (D->Rear + 1) % D->MaxSize;
     return true;
 
 }
@@ -251,7 +254,8 @@ ElementType PopBack(Deque D) {
     if (IsEmpty(D)) {
         return ERROR;
     }
-    D->Rear = (D->Rear - 1) % D->MaxSize;
+    //TODO 要确保下标是非负数
+    D->Rear = (D->Rear - 1 + D->MaxSize) % D->MaxSize;
     ElementType X = D->Data[D->Rear];
     return X;
 

@@ -43,14 +43,15 @@ int main() {
 }
 
 /* 你的代码将被嵌在这里 */
-bool palindrome(char *t) {
+bool palindrome(char *s) {
     int length = 0;
-    while (t[length] != '\0') {
+    while (s[length] != '\0') {
         length++;
     }
     bool result = true;
-    for (int i = 0; i < length / 2; i++) {
-        if (t[i] != t[length - i - 1]) {
+    int mid = length / 2;
+    for (int i = 0; i < mid; i++) {
+        if (s[i] != s[length - i - 1]) {
             result = false;
             break;
         }

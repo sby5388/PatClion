@@ -184,42 +184,43 @@ bool IsFull(Deque D);
 bool IsEmpty(Deque D);
 
 bool Push(ElementType X, Deque D) {
-    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
+//    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
     if (IsFull(D)) {
         return false;
     }
+    D->Front = (D->Front - 1 + D->MaxSize) % D->MaxSize;
     D->Data[D->Front] = X;
-    D->Front = (D->Front - 1) % D->MaxSize;
     return true;
 }
 
 ElementType Pop(Deque D) {
-    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
+//    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
     if (IsEmpty(D)) {
         return ERROR;
     }
+    ElementType X = D->Data[D->Front];
     D->Front = (D->Front + 1) % D->MaxSize;
-    return D->Data[D->Front];
+    return X;
 
 }
 
 bool Inject(ElementType X, Deque D) {
-    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
+//    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
     if (IsFull(D)) {
         return false;
     }
-    D->Rear = (D->Rear + 1) % D->MaxSize;
     D->Data[D->Rear] = X;
+    D->Rear = (D->Rear + 1) % D->MaxSize;
     return true;
 }
 
 ElementType Eject(Deque D) {
-    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
+//    printf("Front = %d,Rear = %d\n", D->Front, D->Rear);
     if (IsEmpty(D)) {
         return ERROR;
     }
+    D->Rear = (D->Rear - 1 + D->MaxSize) % D->MaxSize;
     ElementType X = D->Data[D->Rear];
-    D->Rear = (D->Rear - 1) % D->MaxSize;
     return X;
 }
 
