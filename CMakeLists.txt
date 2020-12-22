@@ -28,13 +28,14 @@ endif ()
 
 add_subdirectory(sets13)
 
-if(fasle)
+if (fasle)
 
-add_subdirectory(sets14)
-add_subdirectory(sets17)
+    add_subdirectory(sets14)
+    add_subdirectory(sets17)
 
-add_subdirectory(other)
+    add_subdirectory(other)
 
-add_subdirectory(temp)
+    add_subdirectory(temp)
 
-endif()
+endif ()
+add_subdirectory(pat_basic_level_practice)
