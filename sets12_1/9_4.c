@@ -8,9 +8,9 @@
 #include <string.h>
 
 #define MAX 30
-typedef struct Node *PtrToNode;
+typedef struct Node2 *PtrToNode;
 typedef PtrToNode Book;
-struct Node {
+struct Node2 {
     char *name;
     double price;
     Book next;
@@ -38,7 +38,7 @@ int main() {
 }
 
 Book CreateBooks() {
-    Book b = (Book) malloc(sizeof(struct Node));
+    Book b = (Book) malloc(sizeof(struct Node2));
     b->name = (char *) malloc(sizeof(char) * MAX);
     b->next = NULL;
     Book pTail = b;
@@ -46,7 +46,7 @@ Book CreateBooks() {
     scanf("%d", &N);
 
     while (N > 0) {
-        Book pNode = (Book) malloc(sizeof(struct Node));
+        Book pNode = (Book) malloc(sizeof(struct Node2));
         pNode->name = (char *) malloc(sizeof(char) * MAX);
         pNode->next = NULL;
 //        todo 这是什么鬼：等到回车键时，才结束

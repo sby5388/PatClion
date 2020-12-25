@@ -9,15 +9,28 @@
 #include "string.h"
 
 #define MAX_LENGTH 100
+#define TEST 1
 
 void check(char *string, int length);
 
 int main() {
     int N;
     scanf("%d", &N);
+    getchar();
     char string[N][MAX_LENGTH];
     for (int i = 0; i < N; ++i) {
-        scanf("%s", string[i]);
+        //可能包含了空格
+        char c;
+        scanf("%c", &c);
+
+        int len = 0;
+        while (!(c == '\0' || c == '\n')) {
+            string[i][len] = c;
+            len++;
+            scanf("%c", &c);
+        }
+        string[i][len] = '\0';
+        //scanf("%s", string[i]);
         int length = strlen(string[i]);
         check(string[i], length);
     }
@@ -25,12 +38,14 @@ int main() {
     return 0;
 }
 
+
 //应该使用一个堆栈来实现它
 void check(char *string, int length) {
-    if (0) {
-        printf("%d %s\n", length, string);
-        return;
-    }
+
+#ifdef TEST
+    printf("%d %s\n", length, string);
+#endif
+
     int error = 0;
     int p = 0;
     int a = 0;
@@ -46,6 +61,7 @@ void check(char *string, int length) {
         char c = temp[i];
         switch (c) {
             case 'A':
+            case ' ':
                 aCount++;
                 break;
             case 'P':

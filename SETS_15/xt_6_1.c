@@ -30,8 +30,8 @@
 #include "stdlib.h"
 
 typedef int ElementType;
-typedef struct Node *PtrToNode;
-struct Node {
+typedef struct Node2 *PtrToNode;
+struct Node2 {
     // 存储结点数据
     ElementType Data;
     PtrToNode Next;
@@ -71,12 +71,12 @@ List Read() {
     scanf("%d", &N);
     for (int i = 0; i < N; ++i) {
         if (list == NULL) {
-            list = (struct Node *) malloc(sizeof(struct Node));
+            list = (struct Node2 *) malloc(sizeof(struct Node2));
             list->Next = NULL;
             scanf("%d", &list->Data);
             pTail = list;
         } else {
-            List next = (struct Node *) malloc(sizeof(struct Node));
+            List next = (struct Node2 *) malloc(sizeof(struct Node2));
             next->Next = NULL;
             scanf("%d", &next->Data);
             pTail->Next = next;

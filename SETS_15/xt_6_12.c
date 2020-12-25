@@ -168,11 +168,21 @@ BinTree Insert(BinTree BST, ElementType X) {
 
 //todo 删除之后，树的形状要发生改变
 //fixme 我还不会
+//四种情况，1,找不到，无法删除，
+//2找到了，且没有左右孩子树
+//3.找到了只有一个孩子树
+//4.找到了，左右孩子树都有
 BinTree Delete(BinTree BST, ElementType X) {
+
+    BinTree deleteNode = Find(BST, X);
+    if (deleteNode == NULL) {
+        printf("Not Found\n");
+        return BST;
+    }
     BinTree pNode = BST;
-//    if (!pNode) {
-//        printf("Not Found\n");
-//
+
+
+
     //删除之后，并不会
     return BST;
 

@@ -38,10 +38,10 @@
 #include <stdlib.h>
 
 typedef int ElementType;
-typedef struct Node *PtrToNode;
+typedef struct Node2 *PtrToNode;
 typedef PtrToNode List;
 
-struct Node {
+struct Node2 {
     ElementType Data;
     PtrToNode Next;
 };
@@ -83,13 +83,13 @@ int main() {
 
 List Read() {
     int N;
-    List L = (List) malloc(sizeof(struct Node));
+    List L = (List) malloc(sizeof(struct Node2));
     L->Next = NULL;
     List tail = L;
 
     scanf("%d", &N);
     while (N) {
-        List next = (List) malloc(sizeof(struct Node));
+        List next = (List) malloc(sizeof(struct Node2));
         next->Next = NULL;
         scanf("%d", &next->Data);
         tail->Next = next;
@@ -118,7 +118,7 @@ void Print(List L) {
 }
 
 List Merge(List L1, List L2) {
-    List L = (List) malloc(sizeof(struct Node));
+    List L = (List) malloc(sizeof(struct Node2));
     L->Next = NULL;
     List next = L;
 

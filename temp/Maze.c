@@ -39,17 +39,17 @@ void InitMaze() {
 /*
 *定义栈和栈的节点
 */
-typedef struct Node {
+typedef struct Node2 {
     int x;
     int y;
-    struct Node *next;
+    struct Node2 *next;
 } Node, *Stack;
 
 /*
 *初始化Stack
 */
-void InitStack(Node *Stack) {
-    Stack = (Node *) malloc(sizeof(Node));
+void InitStack(Node2 *Stack) {
+    Stack = (Node2 *) malloc(sizeof(Node2));
     if (Stack == NULL) {
         printf("分配空间失败\n");
         exit(0);
@@ -61,9 +61,9 @@ void InitStack(Node *Stack) {
 /*
 *压栈
 */
-void push(Node *Stack, int x, int y) {
-    Node *temp;
-    temp = (Node *) malloc(sizeof(Node));
+void push(Node2 *Stack, int x, int y) {
+    Node2 *temp;
+    temp = (Node2 *) malloc(sizeof(Node2));
     if (!temp) {
         printf("分配内存空间错误");
         return;
@@ -78,8 +78,8 @@ void push(Node *Stack, int x, int y) {
 /*
 *出栈
 */
-void pop(Node *Stack, int *x, int *y) {
-    Node *temp;
+void pop(Node2 *Stack, int *x, int *y) {
+    Node2 *temp;
     temp = Stack->next;
     if (!temp) {
         return;
@@ -94,7 +94,7 @@ void pop(Node *Stack, int *x, int *y) {
 /*
 *判断栈是否为空
 */
-int isEmpty(Node *Stasck) {
+int isEmpty(Node2 *Stasck) {
     return ((Stasck->next) == NULL);
 }
 
@@ -163,7 +163,7 @@ void ShowPath() {
     int curx = 0, cury = 0;
     int count = 0;
     int flag = 0;
-    Node *Stacks = NULL;
+    Node2 *Stacks = NULL;
     InitStack(Stacks);
     do {
         if (maze[curx][cury] == 9) {

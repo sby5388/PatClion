@@ -33,10 +33,10 @@
 
 #define ERROR -1
 typedef int ElementType;
-typedef struct Node *PtrToNode;
+typedef struct Node2 *PtrToNode;
 typedef PtrToNode List;
 
-struct Node {
+struct Node2 {
     ElementType Data;
     PtrToNode Next;
 };
@@ -61,13 +61,13 @@ int main() {
 
 //todo 带头结点
 List Read() {
-    List L = (List) malloc(sizeof(struct Node));
+    List L = (List) malloc(sizeof(struct Node2));
     L->Next = NULL;
     List tail = L;
     int N;
     scanf("%d", &N);
     while (N > 0) {
-        List pNode = (List) malloc(sizeof(struct Node));
+        List pNode = (List) malloc(sizeof(struct Node2));
         pNode->Next = NULL;
         scanf("%d", &pNode->Data);
 

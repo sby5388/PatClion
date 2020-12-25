@@ -32,9 +32,9 @@
 #include <stdlib.h>
 
 typedef int ElementType;
-typedef struct Node *PtrToNode;
+typedef struct Node2 *PtrToNode;
 typedef PtrToNode List;
-struct Node {
+struct Node2 {
     ElementType Data;
     PtrToNode Next;
 };
@@ -62,14 +62,14 @@ int main() {
 }
 
 List Read() {
-    List L = (List) malloc(sizeof(struct Node));
+    List L = (List) malloc(sizeof(struct Node2));
     L->Next = NULL;
     List tail = L;
 
     int N;
     scanf("%d", &N);
     while (N) {
-        List node = (List) malloc(sizeof(struct Node));
+        List node = (List) malloc(sizeof(struct Node2));
         node->Next = NULL;
         scanf("%d", &node->Data);
         tail->Next = node;
@@ -93,7 +93,7 @@ void Print(List L) {
 /* 你的代码将被嵌在这里 */
 
 List Insert(List L, ElementType X) {
-    List pNode = (List) malloc(sizeof(struct Node));
+    List pNode = (List) malloc(sizeof(struct Node2));
     pNode->Next = NULL;
     pNode->Data = X;
     //插在头部

@@ -6,10 +6,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node *PtrToNode;
+typedef struct Node2 *PtrToNode;
 typedef PtrToNode List;
 typedef int ElementType;
-struct Node {
+struct Node2 {
     ElementType Data;
     PtrToNode Next;
 };
@@ -48,11 +48,11 @@ List Read() {
     scanf("%d", &N);
     //带头节点的
     List pHead;
-    pHead = (List) malloc(sizeof(struct Node));
+    pHead = (List) malloc(sizeof(struct Node2));
     pHead->Next = NULL;
     List pNext = pHead;
     while (N > 0) {
-        List pNode = (List) malloc(sizeof(struct Node));
+        List pNode = (List) malloc(sizeof(struct Node2));
         pNode->Next = NULL;
         scanf("%d", &pNode->Data);
         pNext->Next = pNode;
@@ -76,7 +76,7 @@ void Print(List L) {
 
 List Reverse(List L) {
     List pResult;
-    pResult = (List) malloc(sizeof(struct Node));
+    pResult = (List) malloc(sizeof(struct Node2));
     pResult->Next = NULL;
     while (L != NULL) {
         List pCurrent = L;

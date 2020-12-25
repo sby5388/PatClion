@@ -11,7 +11,7 @@
 #define ERROR -1
 typedef int ElementType;
 typedef int Position;
-typedef struct QNode *PtrToQNode;
+typedef struct QNode2 *PtrToQNode;
 typedef PtrToQNode Deque;
 /**
  * 双端队列（deque，即double-ended queue的缩写）是一种具有队列和栈性质的数据结构，
@@ -19,7 +19,7 @@ typedef PtrToQNode Deque;
  * 若以顺序存储方式实现双端队列，
  * TODO 顺序存储
  */
-struct QNode {
+struct QNode2 {
     /* 存储元素的素组 */
     ElementType *Data;
     /* 队列的头指针 */
@@ -133,7 +133,7 @@ int main() {
 /* 注意：为区分空队列和满队列，需要多开辟一个空间 */
 //TODO 这里是题目给定的，不能修改
 Deque CreateDeque(int MaxSize) {
-    Deque D = (Deque) malloc(sizeof(struct QNode));
+    Deque D = (Deque) malloc(sizeof(struct QNode2));
     MaxSize++;
     D->Data = (ElementType *) malloc(sizeof(ElementType) * MaxSize);
     D->Front = D->Rear = 0;

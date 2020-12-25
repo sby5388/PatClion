@@ -12,7 +12,7 @@
 
 typedef int ElementType;
 typedef int Position;
-struct QNode {
+struct QNode2 {
     //TODO 相当于一个 ElementType Data[];
     /* 存储元素的数组   */
     ElementType *Data;
@@ -23,7 +23,7 @@ struct QNode {
     /* 队列最大容量     */
     int MaxSize;
 };
-typedef struct QNode *PtrToQNode;
+typedef struct QNode2 *PtrToQNode;
 typedef PtrToQNode Queue;
 
 typedef enum {
@@ -76,7 +76,7 @@ int main() {
 }
 
 Queue CreateQueue(int MaxSize) {
-    Queue Q = (Queue) malloc(sizeof(struct QNode));
+    Queue Q = (Queue) malloc(sizeof(struct QNode2));
     //数组部分也要申请空间
     Q->Data = (ElementType *) malloc(MaxSize * sizeof(ElementType));
     Q->Count = 0;
