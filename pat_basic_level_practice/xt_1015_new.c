@@ -56,8 +56,8 @@ H（<100），为优先录取线——德分和才分均不低于此线的被定
 
 #define Test 0
 
-static int Min;
-static int Max;
+static int L;
+static int H;
 
 
 typedef enum {
@@ -96,7 +96,7 @@ void PrintStudent(Student student);
 int main() {
     //printf("%d %d %d %d %d\n", A, B, C, D, E);
     int N;
-    scanf("%d %d %d", &N, &Min, &Max);
+    scanf("%d %d %d", &N, &L, &H);
     Student student = CreateStudentList(N);
     Student pHead = student;
     int count = 0;
@@ -139,10 +139,13 @@ Student CreateStudentList(int N) {
 //                       + pNode->All * 1000 * 1000
 //                       + pNode->type * 1000 * 1000 * 1000;
 
+        //printf("type = %d\n", pNode->type);
 
         //不合格的过滤掉
         if (pNode->type > A) {
             InsertStudent(pTail, pNode);
+            //printf("after insert\n");
+            //PrintStudent(pHead);
         }
         N--;
     }
@@ -150,13 +153,12 @@ Student CreateStudentList(int N) {
 }
 
 SType getType(int de, int cai) {
-    if (de < Min || cai < Min) {
-        //不及格
+    if (de < L || cai < L) {
+        //不合格
         return A;
     }
-
-    if (de >= Max) {
-        if (cai >= Max) {
+    if (de >= H) {
+        if (cai >= H) {
             //才德全尽
             return E;
         } else {
@@ -164,13 +166,13 @@ SType getType(int de, int cai) {
             return D;
         }
     }
-    //de<Max && de >= Min
-    if (cai > de) {
+    if (de >= cai) {
         //才德兼亡
         return C;
     }
-    //及格
+    //合格
     return B;
+
 }
 
 
@@ -183,30 +185,26 @@ bool compareStudent0(Student a, Student b) {
 }
 
 bool compareStudent(Student a, Student b) {
-    //
-
-
     if (a != NULL && b != NULL) {
         //printf("%d %d %d %d %d\n", a->type, a->All, a->De, a->Cai, a->Id);
         //printf("%d %d %d %d %d\n", b->type, b->All, b->De, b->Cai, b->Id);
 
         if (a->type != b->type) {
+            //printf("type %d : %d \n", a->type, b->type);
             return a->type > b->type;
         }
         if (a->All != b->All) {
-            //printf("%d %d All\n", a->Id, b->Id);
+            //printf("All %d : %d \n", a->All, b->All);
             return a->All > b->All;
         }
         if (a->De != b->De) {
-            //printf("%d %d De\n", a->Id, b->Id);
+            //printf("De %d : %d \n", a->De, b->De);
             return a->De > b->De;
         }
-        //printf("%d %d id\n", a->Id, b->Id);
+        //printf("Id %d : %d \n", a->Id, b->Id);
         return a->Id < b->Id;
-
     }
-
-
+    //printf("empty %d %d \n", a == NULL, b == NULL);
     return true;
 }
 
@@ -225,9 +223,12 @@ void InsertStudent(Student List, Student student) {
         return;
     }
     Student pHead = List;
+//    bool insert = compareStudent(student, pHead->Next);
+//    printf("insert = %d\n", insert);
+
     //头部
     if (compareStudent(student, pHead->Next)) {
-        student->Next = pHead->Next->Next;
+        student->Next = pHead->Next;
         pHead->Next = student;
         return;
     }
@@ -242,51 +243,4 @@ void InsertStudent(Student List, Student student) {
             }
         }
     }
-
-
-}
-
-
-void InsertStudent0(Student List, Student student) {
-//    printf("insert**\n");
-    if (List == NULL || student == NULL) {
-        return;
-    }
-    if (List->Next == NULL) {
-        List->Next = student;
-    } else {
-        if (Test) {
-            Student pNode = List;
-            while (pNode->Next) {
-                pNode = pNode->Next;
-            }
-            pNode->Next = student;
-        } else {
-
-
-            Student pHead = List;
-
-            while (pHead->Next) {
-                bool insert = compareStudent(pHead->Next, student);
-                printf("insert = %d\n", insert);
-                if (insert) {
-                    bool insert2 = compareStudent(student, pHead->Next->Next);
-                    printf("insert2 = %d\n", insert2);
-                    if (insert2) {
-                        student->Next = pHead->Next->Next;
-                        pHead->Next = student;
-                        break;
-                    } else {
-                        pHead = pHead->Next;
-                    }
-                } else {
-                    student->Next = pHead->Next;
-                    pHead->Next = student;
-                    break;
-                }
-            }
-        }
-    }
-    printf("after insert\n");
-    PrintStudent(List);
 }

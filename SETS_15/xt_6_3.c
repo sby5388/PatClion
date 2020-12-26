@@ -23,9 +23,9 @@
 #include "stdlib.h"
 
 typedef int ElementType;
-typedef struct LNode *PtrNode;
+typedef struct LNode2 *PtrNode;
 typedef PtrNode List;
-struct LNode {
+struct LNode2 {
     ElementType Data;
     PtrNode Next;
 
@@ -46,7 +46,7 @@ List Read() {
     int N;
     scanf("%d", &N);
     while (N != -1) {
-        List pNode = (List) malloc(sizeof(struct LNode));
+        List pNode = (List) malloc(sizeof(struct LNode2));
         pNode->Next = NULL;
         pNode->Data = N;
         if (L == NULL) {

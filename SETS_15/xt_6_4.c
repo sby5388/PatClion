@@ -27,10 +27,10 @@
 
 #define ERROR -1
 typedef int ElementType;
-typedef struct LNode *PtrToNode;
+typedef struct LNode2 *PtrToNode;
 typedef PtrToNode List;
 
-struct LNode {
+struct LNode2 {
     ElementType Data;
     PtrToNode Next;
 };
@@ -70,7 +70,7 @@ List Read() {
     int N = -1;
     scanf("%d", &N);
     while (N != -1) {
-        List pNode = (List) malloc(sizeof(struct LNode));
+        List pNode = (List) malloc(sizeof(struct LNode2));
         pNode->Next = NULL;
         pNode->Data = N;
         if (L == NULL) {
@@ -91,7 +91,7 @@ List Read2() {
     List pTail;
     int N = -1;
     while ((scanf("%d", &N) == 1) && N != -1) {
-        List pNode = (List) malloc(sizeof(struct LNode));
+        List pNode = (List) malloc(sizeof(struct LNode2));
         pNode->Next = NULL;
         pNode->Data = N;
         if (L == NULL) {

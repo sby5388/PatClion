@@ -14,8 +14,8 @@ typedef enum {
 typedef int ElementType;
 
 typedef int Position;
-typedef struct LNode *List;
-struct LNode {
+typedef struct LNode2 *List;
+struct LNode2 {
     ElementType Data[MAXSIZE];
     Position Last; /* 保存线性表中最后一个元素的位置 */
 };
@@ -44,7 +44,7 @@ int main() {
 /* 你的代码将被嵌在这里 */
 
 List ReadInput() {
-    List L = (List) malloc(sizeof(struct LNode));
+    List L = (List) malloc(sizeof(struct LNode2));
     L->Last = 0;
     int N;
 

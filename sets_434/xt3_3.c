@@ -40,9 +40,9 @@
 #define MAXSIZE 20
 typedef int ElementType;
 typedef int Position;
-typedef struct LNode *List;
+typedef struct LNode2 *List;
 
-struct LNode {
+struct LNode2 {
     ElementType Data[MAXSIZE];
     //保存线性表中最后一个元素的位置
     Position Last;
@@ -88,7 +88,7 @@ int main() {
 
 List ReadInput() {
     int N;
-    List L = (List) malloc(sizeof(struct LNode));
+    List L = (List) malloc(sizeof(struct LNode2));
     L->Last = 0;
     int index = 0;
 

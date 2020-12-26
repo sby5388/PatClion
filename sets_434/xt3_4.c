@@ -8,8 +8,8 @@
 #include <stdio.h>
 
 typedef int ElementType;
-typedef struct LNode *List;
-struct LNode {
+typedef struct LNode2 *List;
+struct LNode2 {
     ElementType *Data;
     int MaxSize;
 };
@@ -62,7 +62,7 @@ int main() {
 }
 
 List CreateList(int MaxSize) {
-    List L = (List) malloc(sizeof(struct LNode));
+    List L = (List) malloc(sizeof(struct LNode2));
     L->Data = (ElementType *) malloc(sizeof(ElementType) * MaxSize);
     L->MaxSize = MaxSize;
 

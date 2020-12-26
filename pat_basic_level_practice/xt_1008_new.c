@@ -14,15 +14,15 @@
 
 typedef char *ElementType;
 
-typedef struct LNode *Word;
-struct LNode {
+typedef struct LNode2 *Word;
+struct LNode2 {
     ElementType X;
     Word Next;
 };
 
 
 int main() {
-    Word pHead = (Word) malloc(sizeof(struct LNode));
+    Word pHead = (Word) malloc(sizeof(struct LNode2));
     pHead->X = NULL;
     pHead->Next = NULL;
 
@@ -30,7 +30,7 @@ int main() {
     scanf("%s", word);
     //TODO 如何判断输入的结束
     while (strlen(word) != 0) {
-        Word node = (Word) malloc(sizeof(struct LNode));
+        Word node = (Word) malloc(sizeof(struct LNode2));
         node->X = NULL;
         node->Next = NULL;
         strcpy(node->X, word);

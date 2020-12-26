@@ -15,7 +15,7 @@
 typedef char ElementType;
 typedef int Position;
 
-struct LNode {
+struct LNode2 {
     ElementType Data[MAX_SIZE];
     Position Front;
 

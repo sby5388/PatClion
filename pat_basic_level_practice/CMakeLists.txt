@@ -10,3 +10,8 @@ add_executable(xt_1008.c xt_1008.c)
 add_executable(xt_1008_new.c xt_1008_new.c)
 add_executable(xt_1015.c xt_1015.c)
 add_executable(xt_1015_new.c xt_1015_new.c)
+
+add_executable(xt_1020.c xt_1020.c)
+add_executable(xt_1020_new.c xt_1020_new.c)
+add_executable(xt_1028.c xt_1028.c)
+add_executable(xt_1028_new.c xt_1028_new.c)

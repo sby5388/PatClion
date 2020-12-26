@@ -59,9 +59,9 @@ typedef enum {
     false, true
 } bool;
 typedef int ElementType;
-typedef struct LNode *PtrToLNode;
+typedef struct LNode2 *PtrToLNode;
 
-struct LNode {
+struct LNode2 {
     ElementType Data;
     PtrToLNode Next;
 };
@@ -131,7 +131,7 @@ int main() {
         printf("%d is inserted as the last element.\n", X);
     }
 
-    P = (Position) malloc(sizeof(struct LNode));
+    P = (Position) malloc(sizeof(struct LNode2));
     flag = Insert(L, X, P);
     //肯定是false
     if (flag == true) {
@@ -153,7 +153,7 @@ int main() {
 #undef DEBUG
 List MakeEmpty() {
     List L;
-    L = (List) malloc(sizeof(struct LNode));
+    L = (List) malloc(sizeof(struct LNode2));
     L->Next = NULL;
     return L;
 }
@@ -162,7 +162,7 @@ bool Insert(List L, ElementType X, Position P) {
     int DEBUG = 0;
     List head = L;
 
-    List insert = (List) malloc(sizeof(struct LNode));
+    List insert = (List) malloc(sizeof(struct LNode2));
     insert->Next = NULL;
     insert->Data = X;
 

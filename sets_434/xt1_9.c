@@ -55,9 +55,9 @@ typedef enum {
 
 typedef int ElementType;
 typedef int Position;
-typedef struct LNode *List;
+typedef struct LNode2 *List;
 
-struct LNode {
+struct LNode2 {
     //元素
     ElementType Data[MAXSIZE];
     //最后一个元素的位置
@@ -90,7 +90,7 @@ List ReadInput() {
     int X;
     Position index = 0;
 
-    L = (List) malloc(sizeof(struct LNode));
+    L = (List) malloc(sizeof(struct LNode2));
     L->Last = 0;
     scanf("%d", &N);
     L->Last = N - 1;

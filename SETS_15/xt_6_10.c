@@ -13,8 +13,8 @@
 
 typedef int Position;
 typedef int ElementType;
-typedef struct LNode *List;
-struct LNode {
+typedef struct LNode2 *List;
+struct LNode2 {
     ElementType Data[MAXSIZE];
     //最后一个元素的位置
     Position Last;
@@ -51,7 +51,7 @@ int main() {
  */
 List ReadInput() {
     int N;
-    List L = (List) malloc(sizeof(struct LNode));
+    List L = (List) malloc(sizeof(struct LNode2));
     L->Last = 0;
     scanf("%d", &N);
     while (L->Last < N) {

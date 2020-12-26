@@ -44,10 +44,10 @@
 
 #define ERROR NULL
 typedef int ElementType;
-typedef struct LNode *PtrToLNode;
+typedef struct LNode2 *PtrToLNode;
 typedef PtrToLNode Position;
 typedef PtrToLNode List;
-struct LNode {
+struct LNode2 {
     ElementType Data;
     PtrToLNode Next;
 };
@@ -143,7 +143,7 @@ int main() {
     }
 
 
-    P = (Position) malloc(sizeof(struct LNode));
+    P = (Position) malloc(sizeof(struct LNode2));
     temp = Insert(L, X, P);
     if (temp != ERROR) {
         printf("Wrong Answer\n");
@@ -164,7 +164,7 @@ int main() {
 
 List Insert(List L, ElementType X, Position P) {
     List head = L;
-    List insert = (List) malloc(sizeof(struct LNode));
+    List insert = (List) malloc(sizeof(struct LNode2));
     insert->Next = NULL;
     insert->Data = X;
 
