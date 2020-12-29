@@ -158,7 +158,7 @@ Position Find(List L, ElementType X) {
 
 bool Delete(List L, Position P) {
     if (P < 0 || P > L->Last) {
-        printf("POSITION %d EMPTY", P);
+        printf("POSITION %d ERROR", P);
         return false;
     }
     for (int i = P; i <= L->Last; ++i) {

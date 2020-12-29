@@ -15,3 +15,7 @@ add_executable(xt_1020.c xt_1020.c)
 add_executable(xt_1020_new.c xt_1020_new.c)
 add_executable(xt_1028.c xt_1028.c)
 add_executable(xt_1028_new.c xt_1028_new.c)
+
+add_executable(xt_1059.c xt_1059.c)
+
+add_executable(prime prime.h prime.c)
