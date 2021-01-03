@@ -31,15 +31,16 @@ endif ()
 if (fasle)
     add_subdirectory(sets13)
     add_subdirectory(sets14)
-    add_subdirectory(sets17)
+
     add_subdirectory(temp)
     add_subdirectory(pat_basic_level_practice)
 
     add_subdirectory(other)
     add_subdirectory(high_ladder_game)
     add_subdirectory(pta2020_2021)
-
+    add_subdirectory(pat_level_pratice)
 
 endif ()
 
-add_subdirectory(pat_level_pratice)
+
+add_subdirectory(sets17)
