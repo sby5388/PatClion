@@ -35,8 +35,11 @@ if (fasle)
     add_subdirectory(temp)
     add_subdirectory(pat_basic_level_practice)
 
+    add_subdirectory(other)
+    add_subdirectory(high_ladder_game)
+    add_subdirectory(pta2020_2021)
+
 
 endif ()
 
-add_subdirectory(other)
-add_subdirectory(high_ladder_game)
+add_subdirectory(pat_level_pratice)
