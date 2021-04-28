@@ -28,7 +28,7 @@ if (SETS_434)
 endif ()
 
 
-if (fasle)
+if (false)
     add_subdirectory(sets13)
     add_subdirectory(sets14)
 
