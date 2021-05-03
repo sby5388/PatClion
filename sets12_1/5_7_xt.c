@@ -37,12 +37,13 @@ double funcos(double e, double x) {
     double item = left / right;
     //first item
     double result = item;
+    double saveData = x * x;
 
     int add = 1;
     int start = 0;
 
     while (1) {
-        left = left * x * x;
+        left = left * saveData;
         right = right * (start + 1) * (start + 2);
         start += 2;
 
