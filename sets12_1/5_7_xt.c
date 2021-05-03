@@ -23,7 +23,7 @@ double funcos(double e, double x);
 int main() {
     double e, x;
 
-    scanf("%1f %1f", &e, &x);
+    scanf("%lf %lf", &e, &x);
     printf("%.6f %.6f \n", e, x);
     printf("cos(%.2f) = %.6f\n", x, funcos(e, x));
     return 0;
