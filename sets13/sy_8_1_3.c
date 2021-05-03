@@ -25,28 +25,25 @@ int main() {
 }
 
 /* 你的代码将被嵌在这里 */
-//TODO error
+
 void splitfloat(float x, int *intpart, float *fracpart) {
-    float iPart = 0.0;
-    float fPart = 0.0f;
-    if (x > 0 && x > iPart) {
-        iPart += 1;
-    } else if (x < 0 && x < iPart) {
-        iPart -= 1;
-    }
+    (*intpart) = 0;
+    (*fracpart) = 0.0f;
+
     if (x > 0) {
-        iPart -= 1;
-        fPart = x - iPart;
+        while (x >= 1) {
+            x--;
+            (*intpart)++;
+        }
+        (*fracpart) = x;
     }
+
     if (x < 0) {
-        iPart += 1;
-        fPart = iPart - x;
+        while (x <= -1) {
+            x++;
+            (*intpart)--;
+        }
+        (*fracpart) = x;
     }
-
-    printf("ipart = %d\n", (int) iPart);
-    printf("fPart = %f\n", fPart);
-    *intpart = (int) iPart;
-    *fracpart = fPart;
-
 
 }
