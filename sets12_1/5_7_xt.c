@@ -16,6 +16,8 @@
 #include "stdio.h"
 #include "math.h"
 
+#define SUCCESS
+
 double funcos(double e, double x);
 
 int main() {
@@ -26,6 +28,44 @@ int main() {
     printf("cos(%.2f) = %.6f\n", x, funcos(e, x));
     return 0;
 }
+
+#ifdef SUCCESS
+
+double funcos(double e, double x) {
+    double left = 1.0;
+    double right = 1.0;
+    double item = left / right;
+    //first item
+    double result = item;
+
+    int add = 1;
+    int start = 0;
+
+    while (1) {
+        left = left * x * x;
+        right = right * (start + 1) * (start + 2);
+        start += 2;
+
+        item = left / right;
+        add = add ? 0 : 1;
+
+        if (add) {
+            result += item;
+        } else {
+            result -= item;
+        }
+
+
+        if (fabs(item) < e) {
+            break;
+        }
+    }
+
+
+    return result;
+}
+
+#else
 
 double funcos(double e, double x) {
 
@@ -79,3 +119,4 @@ double funcos(double e, double x) {
 
     return result;
 }
+#endif
