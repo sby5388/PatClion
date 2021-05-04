@@ -5,7 +5,7 @@
  * 类似于4_11_1的问题，只是根据月数求兔子对数
  */
 
-#include "stdio.h"
+#include <stdio.h>
 
 int getCount(int N);
 

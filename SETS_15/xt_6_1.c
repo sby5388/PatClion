@@ -26,8 +26,8 @@
  * 2 5 4 3 1
  *
  */
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef int ElementType;
 typedef struct Node2 *PtrToNode;

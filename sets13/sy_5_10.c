@@ -4,8 +4,8 @@
 //实验5-10 使用函数求余弦函数的近似值 (15 分)
 //https://pintia.cn/problem-sets/13/problems/468
 
-#include "stdio.h"
-#include "math.h"
+#include <stdio.h>
+#include <math.h>
 
 
 double funcos(double e, double x);

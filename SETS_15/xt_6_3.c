@@ -19,8 +19,8 @@
  * 输出样例：
  * 5
  */
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef int ElementType;
 typedef struct LNode2 *PtrNode;
